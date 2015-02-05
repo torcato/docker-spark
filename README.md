@@ -41,20 +41,31 @@ This will start 4 docker images:
 To start a cluster with a different number of workers use the -n , --workers option, example for 10 workers:
   $ bin/start_cluster.py -n 10 test
 
-   * warning: If your current user is not part of the docker group, you will have to run the scripts with sudo.
+   * If your current user is not part of the docker group, you will have to run the scripts with sudo.
 
    * The script uses the --name option in docker so if you cannot restart a spark cluster with the same name without stopping and deleting the old docker images. Use the -f, --force option to force to bypass this.
 
-To start a spark shell using the just created cluster type :
-  $ bin/spark_shell test
+### Running applications on the cluster
 
-To stop the "test" cluster type:
-  $ bin/stop_cluster.py test
-  
+To start a spark shell using the just created cluster type :
+  $ bin/spark_shell.sh test
+
+Optionally if you want to use another Spark app, you can use the script bin/worker_bash to get a bash shell in a image registered in the cluster. Example:
+
+$ bin/worker_bash.sh test app
+
+this will start a bash shell in a new docker container "app.test" already registered in the DNS of the cluster and with the Spark environment variables defined so that you can use other spark clients.
+For instance to run a spark python shell in this container you can type:
+/opt/spark/bin/pyspark
+
+
 ### Working with files
 
 All the docker containers share a volume /data with the host container so that you can work with files.
 By default it will try to link a ./data folder in your current folder, use the -d, --data option to specify another path for the shared folder ammong containers.
 $ bin/start_cluster.py --data path/to/data test
 
- 
+### Stopping the cluster 
+
+To stop the "test" cluster type:
+  $ bin/stop_cluster.py test
