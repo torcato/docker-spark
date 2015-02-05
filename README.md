@@ -68,4 +68,5 @@ $ bin/start_cluster.py --data path/to/data test
 ### Stopping the cluster 
 
 To stop the "test" cluster type:
+
   $ bin/stop_cluster.py test
