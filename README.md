@@ -14,45 +14,47 @@ Docker images and scripts for running a several Spark workers in a single machin
 ## Usage
 
 Clone the repository 
-  $git clone https://github.com/torcato/docker-spark.git
+  $ git clone https://github.com/torcato/docker-spark.git
   
 ### Build the images
 
 Go to the folder where you cloned the repository.
 The images have dependencies between them, so issue the following commands in the same order to build all the images.
 
-  $sudo docker build -t rawlabs/dns ./dns
-  $sudo docker build -t rawlabs/jdk-base ./jdk-base
-  $sudo docker build -t rawlabs/hadoop-base
-  $sudo docker build -t rawlabs/spark-hadoop spark-hadoop
-  $sudo docker build -t rawlabs/spark-only ./spark-only
+  $ sudo docker build -t rawlabs/dns ./dns
+  $ sudo docker build -t rawlabs/jdk-base ./jdk-base
+  $ sudo docker build -t rawlabs/hadoop-base
+  $ sudo docker build -t rawlabs/spark-hadoop spark-hadoop
+  $ sudo docker build -t rawlabs/spark-only ./spark-only
 
 The spark-only builds Spark from the source code, it takes quite a long time downloading dependencies and building, so just be patient.
 
 ### Running an small cluster
 
 To start a small cluster use type 
-  $bin/start_cluster.py spark
+  $ bin/start_cluster.py test
 This will start 4 docker images:
-dns.spark : DNS server for the cluster
-master.spark: Spark master node
-and 2 worker nodes (default): worker0.spark and worker1.spark
+   * dns.test : DNS server for the cluster
+   * master.test: Spark master node
+   * and 2 worker nodes (default): worker0.test and worker1.test
 
-to start a cluster with 10 worker nodes type:
-  $bin/start_cluster.py -n 10 spark
+To start a cluster with a different number of workers use the -n , --workers option, example for 10 workers:
+  $ bin/start_cluster.py -n 10 test
 
-warning: If your current user is not part of the docker group, you will have to run the scripts with sudo.
+   * warning: If your current user is not part of the docker group, you will have to run the scripts with sudo.
+
+   * The script uses the --name option in docker so if you cannot restart a spark cluster with the same name without stopping and deleting the old docker images. Use the -f, --force option to force to bypass this.
 
 To start a spark shell using the just created cluster type :
-  $bin/spark_shell spark
+  $ bin/spark_shell test
 
-To stop the cluster type:
-  $bin/stop_cluster.py spark
+To stop the "test" cluster type:
+  $ bin/stop_cluster.py test
   
-# Using the data volume
+### Working with files
 
 All the docker containers share a volume /data with the host container so that you can work with files.
-By default it will try to link a ./data folder in your current folder, use the -d option to specify another path for the shared folder ammong containers.
+By default it will try to link a ./data folder in your current folder, use the -d, --data option to specify another path for the shared folder ammong containers.
+$ bin/start_cluster.py --data path/to/data test
 
  
-
