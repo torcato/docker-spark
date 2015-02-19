@@ -1,4 +1,4 @@
-FROM rawlabs/hadoop-base
+FROM diasepfl/hadoop-base
 MAINTAINER Cesar Matos <cesar.matos@epfl.ch>
 
 # Install Scala + spark

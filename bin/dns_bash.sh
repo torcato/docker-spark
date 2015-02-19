@@ -1,3 +1,5 @@
+#!/bin/bash
+
 dns="dns.$1"
 dns_dir="/tmp/dns_$1"
 dns_file="$dns_dir/hosts.txt"

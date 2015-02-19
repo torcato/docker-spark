@@ -1,4 +1,4 @@
-FROM rawlabs/jdk-base
+FROM diasepfl/jdk-base
 MAINTAINER Cesar Matos <cesar.matos@epfl.ch>
 
 # Setup a volume for data
