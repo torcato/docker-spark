@@ -2,7 +2,7 @@
 
 master="master.$1"
 port=$2
-image=rawlabs/spark-only
+image=diasepfl/spark-only
 shell="shell.$1"
 
 if [ "$master" == "" ]; then

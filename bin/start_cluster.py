@@ -10,7 +10,7 @@ from time import sleep
 
 parser = argparse.ArgumentParser(description='deploys a spark cluster using docker')
 parser.add_argument(  help='spark cluster name', dest='cluster')
-parser.add_argument('-i', '--image', help='docker image to use',default ='rawlabs/spark-only')
+parser.add_argument('-i', '--image', help='docker image to use',default ='diasepfl/spark-only')
 parser.add_argument('-n', '--workers', help='number of workers ', default = 2, type=int)
 parser.add_argument('-d', '--data', help='shared data directory ', default='data', required=False)
 parser.add_argument('-f', '--force', help='forces the deletion of old instances', action='store_true')

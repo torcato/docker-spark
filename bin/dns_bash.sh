@@ -11,6 +11,6 @@ cmd="docker run -ti \
 	--name  $dns \
 	--volume=$dns_dir:/dns \
 	-e CLUSTER=$1 \
-	rawlabs/dns /bin/bash"
+	diasepfl/dns /bin/bash"
 echo $cmd
 $cmd

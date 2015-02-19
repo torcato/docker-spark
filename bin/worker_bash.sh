@@ -17,7 +17,7 @@ cmd="docker run -ti \
     --dns $dns_ip \
     -e SPARK_MASTER_IP=$master \
     -e SPARK_MASTER_PORT=7077 \
-    rawlabs/spark-only ./run_bash.sh"
+    diasepfl/spark-only ./run_bash.sh"
 
 echo $cmd
 $cmd

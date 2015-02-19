@@ -21,6 +21,6 @@ cmd="docker run -ti \
     -e SPARK_MASTER_WEBUI_PORT=8080 \
     -p 8080:8080 \
     -p 7077:7077 \
-    rawlabs/spark-only /bin/bash"
+    diasepfl/spark-only /bin/bash"
 echo $cmd
 $cmd
