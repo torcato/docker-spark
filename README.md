@@ -22,9 +22,13 @@ Go to the folder where you cloned the repository.
 The images have dependencies between them, so issue the following commands in the same order to build all the images.
 
   $ sudo docker build -t diasepfl/dns ./dns
+  
   $ sudo docker build -t diasepfl/jdk-base ./jdk-base
+  
   $ sudo docker build -t diasepfl/hadoop-base
+  
   $ sudo docker build -t diasepfl/spark-hadoop spark-hadoop
+  
   $ sudo docker build -t diasepfl/spark-only ./spark-only
 
 The spark-only builds Spark from the source code, it takes quite a long time downloading dependencies and building, so just be patient.
